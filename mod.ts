@@ -2,7 +2,7 @@ import axiod from "https://deno.land/x/axiod/mod.ts";
 import * as log from "https://deno.land/std@0.104.0/log/mod.ts";
 import { App, AppRating, Review } from "./types.ts";
 
-async function getApps(): Promise<
+export async function getApps(): Promise<
   { [name: string]: AppRating }
 > {
   let result = {};
@@ -16,7 +16,7 @@ async function getApps(): Promise<
   return result;
 }
 
-async function getReviews(app: string): Promise<
+export async function getReviews(app: string): Promise<
   Review[]
 > {
   let result = [];
