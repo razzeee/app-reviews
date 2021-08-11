@@ -17,10 +17,10 @@ jobs:
       - uses: jurassiscripts/setup-velociraptor@v1
 
       - name: Format
-        run: deno fmt --check
+        run: cd export && deno fmt --check
 
       - name: Lint
-        run: deno lint
+        run: cd export && deno lint
 
       - name: Tests
-        run: deno test
+        run: cd export && deno test
