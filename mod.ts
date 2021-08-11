@@ -30,14 +30,17 @@ async function getReviews(app: string): Promise<
   return result;
 }
 
+log.info("Starting export.")
 const apps = await getApps();
 
 const allApps: App[] = [];
 for (const app in apps) {
   if (Object.prototype.hasOwnProperty.call(apps, app)) {
     const reviews = await getReviews(app);
-    allApps.push({ reviews, ...apps[app], app_id: app });
+    allApps.push({ reviews, ...apps[app], appId: app });
   }
 }
 
 Deno.writeTextFileSync("./data/apps.json", JSON.stringify(allApps));
+
+log.info("Export finished.")

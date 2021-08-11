@@ -9,23 +9,23 @@ export interface AppRating {
 }
 
 export interface Review {
-  app_id: string;
-  date_created: number;
+  appId: string;
+  dateCreated: number;
   description: string;
   distro: string;
-  karma_down: number;
-  karma_up: number;
+  karmaDown: number;
+  karmaUp: number;
   locale: string;
   rating: number;
   reported: number;
-  review_id: number;
+  reviewId: number;
   summary: string;
-  user_display: string;
-  user_hash: string;
+  userDisplay: string;
+  userHash: string;
   version: string;
 }
 
 export interface App extends AppRating {
-  app_id: string;
+  appId: string;
   reviews: Review[];
 }
