@@ -30,7 +30,7 @@ async function getReviews(app: string): Promise<
   return result;
 }
 
-log.info("Starting export.")
+log.info("Starting export.");
 const apps = await getApps();
 
 const allApps: App[] = [];
@@ -43,4 +43,4 @@ for (const app in apps) {
 
 Deno.writeTextFileSync("./data/apps.json", JSON.stringify(allApps));
 
-log.info("Export finished.")
+log.info("Export finished.");
