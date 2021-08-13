@@ -7,3 +7,9 @@ deno install -qAn vr https://deno.land/x/velociraptor@1.0.1/cli.ts
 
 vr
 ```
+
+To execute the export:
+
+```
+vr run export
+```
