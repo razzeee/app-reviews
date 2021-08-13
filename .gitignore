@@ -4,4 +4,4 @@
 *bak
 .history
 .temp/**
-data/**
+export/data/**
