@@ -9,7 +9,7 @@
       "request": "launch",
       "type": "pwa-node",
       "program": "mod.ts",
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/export",
       "runtimeExecutable": "deno",
       "runtimeArgs": [
         "run",
