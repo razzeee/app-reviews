@@ -1,6 +1,6 @@
 import axiod from "https://deno.land/x/axiod/mod.ts";
 import * as log from "https://deno.land/std@0.104.0/log/mod.ts";
-import { App, AppRating, Review } from "./types.ts";
+import { AppRating, Review } from "./types.ts";
 
 export async function getApps(): Promise<{ [name: string]: AppRating }> {
   let result = {};
@@ -32,11 +32,13 @@ log.info("Starting export.");
 const apps = await getApps();
 Deno.writeTextFileSync("./data/apps.json", JSON.stringify(apps));
 
+const reviews: Review[] = [];
 for (const app in apps) {
   if (Object.prototype.hasOwnProperty.call(apps, app)) {
     const reviews = await getReviews(app);
-    Deno.writeTextFileSync(`./data/${app}.json`, JSON.stringify(reviews));
+    reviews.push(...reviews);
   }
 }
+Deno.writeTextFileSync(`./data/reviews.json`, JSON.stringify(reviews));
 
 log.info("Export finished.");

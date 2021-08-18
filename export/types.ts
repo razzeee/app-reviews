@@ -24,8 +24,3 @@ export interface Review {
   userHash: string;
   version: string;
 }
-
-export interface App extends AppRating {
-  appId: string;
-  reviews: Review[];
-}
