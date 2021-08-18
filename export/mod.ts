@@ -31,12 +31,15 @@ export async function getReviews(app: string): Promise<Review[]> {
 log.info("Starting export.");
 const apps = await getApps();
 Deno.writeTextFileSync("./data/apps.json", JSON.stringify(apps));
+log.info("Exported apps.");
 
 const reviews: Review[] = [];
 for (const app in apps) {
   if (Object.prototype.hasOwnProperty.call(apps, app)) {
-    const reviews = await getReviews(app);
-    reviews.push(...reviews);
+    log.info(`Exporting reviews for ${app}`);
+    const appReviews = await getReviews(app);
+
+    reviews.push(...appReviews);
   }
 }
 Deno.writeTextFileSync(`./data/reviews.json`, JSON.stringify(reviews));
