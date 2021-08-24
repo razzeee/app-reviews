@@ -42,6 +42,12 @@ export async function getAll(): Promise<any> {
   return result;
 }
 
+const write = { name: "write", path: "data" } as const;
+const net = { name: "net", host: "odrs.gnome.org" } as const;
+
+Deno.permissions.request(net);
+Deno.permissions.request(write);
+
 log.info("Starting export.");
 const apps = await getApps();
 Deno.writeTextFileSync("./data/apps.json", JSON.stringify(apps));
@@ -62,5 +68,3 @@ for (const app in apps) {
 Deno.writeTextFileSync(`./data/reviews.json`, JSON.stringify(reviews));
 
 log.info("Export finished.");
-
-// https://dl.flathub.org/repo/appstream/x86_64/appstream.xml.gz
