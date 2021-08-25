@@ -28,20 +28,6 @@ export async function getReviews(app: string): Promise<Review[]> {
   return result;
 }
 
-// deno-lint-ignore no-explicit-any
-export async function getAll(): Promise<any> {
-  let result = [];
-  try {
-    const response = await axiod.get(
-      `https://odrs.gnome.org/1.0/reviews/api/all`
-    );
-    result = response.data;
-  } catch (error) {
-    log.warning(error);
-  }
-  return result;
-}
-
 const write = { name: "write", path: "data" } as const;
 const net = { name: "net", host: "odrs.gnome.org" } as const;
 
@@ -52,9 +38,6 @@ log.info("Starting export.");
 const apps = await getApps();
 Deno.writeTextFileSync("./data/apps.json", JSON.stringify(apps));
 log.info("Exported apps.");
-const all = await getAll();
-Deno.writeTextFileSync("./data/all.json", JSON.stringify(all));
-log.info("Exported all.");
 
 const reviews: Review[] = [];
 for (const app in apps) {
