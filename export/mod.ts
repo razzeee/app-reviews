@@ -6,7 +6,7 @@ export async function getApps(): Promise<{ [name: string]: AppRating }> {
   let result = {};
   try {
     const response = await axiod.get(
-      "https://odrs.gnome.org/1.0/reviews/api/ratings"
+      "https://odrs.gnome.org/1.0/reviews/api/ratings",
     );
     result = response.data;
   } catch (error) {
@@ -19,7 +19,7 @@ export async function getReviews(app: string): Promise<Review[]> {
   let result = [];
   try {
     const response = await axiod.get(
-      `https://odrs.gnome.org/1.0/reviews/api/app/${app}`
+      `https://odrs.gnome.org/1.0/reviews/api/app/${app}`,
     );
     result = response.data;
   } catch (error) {
